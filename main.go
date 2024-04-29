@@ -4,38 +4,63 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"sort"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/Ullaakut/nmap/v3"
 )
 
 type Device struct {
-	IP    string          `json:"ip"`
-	MAC   string          `json:"mac"`
-	Port  string          `json:"port"`
-	Name  string          `json:"name"`
-	Ports map[string]bool `json:"ports"`
+	IP    string       `json:"ip"`
+	MAC   string       `json:"mac"`
+	Port  int          `json:"port"`
+	Name  string       `json:"name"`
+	Ports map[int]bool `json:"ports"`
 }
 
 func (d Device) String() string {
-	res := fmt.Sprintf("IP: %s, MAC: %s, Port: %s, Name: %s",
-		d.IP, d.MAC, d.Port, d.Name,
-	)
+	var parts []string
 
+	if d.Name != "" {
+		parts = append(parts, "Name: "+d.Name)
+	}
+
+	if d.IP != "" {
+		parts = append(parts, "IP: "+d.IP)
+	}
+
+	if d.MAC != "" {
+		parts = append(parts, "MAC: "+d.MAC)
+	}
+
+	if d.Port != 0 {
+		parts = append(parts, "Port: "+strconv.Itoa(d.Port))
+	}
+
+	res := strings.Join(parts, ", ")
 	if len(d.Ports) != 0 {
 		res += "\nPORTS:\n"
-		for port, status := range d.Ports {
-			res += fmt.Sprintf("\t%-5s: %5t\n", string(port), status)
+
+		keys := make([]int, 0, len(d.Ports))
+		for k := range d.Ports {
+			keys = append(keys, k)
+		}
+
+		sort.Ints(keys)
+		for _, port := range keys {
+			res += fmt.Sprintf("\t%-5s: %5t\n", strconv.Itoa(port), d.Ports[port])
 		}
 	}
 
 	return res
 }
 
-func PortPing(ip string, ports []string) map[string]bool {
-	results := make(map[string]bool)
+func PortPing(ip string, ports []int) map[int]bool {
+	results := make(map[int]bool)
 	for _, port := range ports {
-		address := net.JoinHostPort(ip, port)
+		address := net.JoinHostPort(ip, strconv.Itoa(port))
 		conn, err := net.DialTimeout("tcp", address, time.Second/2)
 		if err != nil {
 			results[port] = false
@@ -103,11 +128,11 @@ func scan(targets string) ([]Device, error) {
 		}
 
 		ports := PortPing(ip,
-			[]string{"20", "21", "22", "80", "135", "139", "143", "443", "445", "3020", "3306", "3389", "8022", "8080"},
+			[]int{20, 21, 22, 80, 135, 139, 143, 443, 445, 3020, 3306, 3389, 8022, 8080},
 		)
 
 		devices = append(devices, Device{
-			Port:  "0",
+			Port:  0,
 			IP:    ip,
 			MAC:   mac,
 			Name:  name,
