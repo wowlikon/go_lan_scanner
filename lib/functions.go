@@ -37,7 +37,7 @@ func Scan(targets string, ports []int) ([]Device, error) {
 	scanner, err := nmap.NewScanner(
 		ctx,
 		nmap.WithTargets(targets), // Specify the network range to scan
-		nmap.WithFastMode(),       // Enable fast mode
+		//nmap.WithFastMode(),       // Enable fast mode
 	)
 
 	if err != nil {
