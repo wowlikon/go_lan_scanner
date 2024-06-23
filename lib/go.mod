@@ -1,7 +1,7 @@
 module github.com/wowlikon/go_lan_scanner/lib
 
-go 1.22.2
+go 1.22.4
 
-require github.com/Ullaakut/nmap/v3 v3.0.0
+require github.com/Ullaakut/nmap v2.0.2+incompatible
 
-require golang.org/x/sync v0.7.0 // indirect
+require github.com/stretchr/testify v1.9.0 // indirect

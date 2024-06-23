@@ -1,12 +1,11 @@
 package lib
 
 import (
-	"context"
 	"net"
 	"strconv"
 	"time"
 
-	"github.com/Ullaakut/nmap/v3"
+	"github.com/Ullaakut/nmap"
 )
 
 func PortPing(ip string, ports []int) map[int]bool {
@@ -30,14 +29,11 @@ func PortPing(ip string, ports []int) map[int]bool {
 
 func Scan(targets string, ports []int) ([]Device, error) {
 	var devices []Device
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
 
 	// Create a new nmap scanner
 	scanner, err := nmap.NewScanner(
-		ctx,
 		nmap.WithTargets(targets), // Specify the network range to scan
-		//nmap.WithFastMode(),       // Enable fast mode
+		nmap.WithFastMode(),       // Enable fast mode
 	)
 
 	if err != nil {

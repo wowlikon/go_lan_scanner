@@ -6,9 +6,9 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
 github.com/stretchr/testify v1.8.2/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
-github.com/wowlikon/go_lan_scanner/lib v0.0.0-20240429140918-69f62d61a8ef h1:+jtUm0Zk0mVz7nUq4ySLpaOmHztlUns6A+e2M/KtHQE=
-github.com/wowlikon/go_lan_scanner/lib v0.0.0-20240429140918-69f62d61a8ef/go.mod h1:JIgY0rdZjsk7aBA3jKw/GSNWwXZM2Y0ExJNVsbT2w0I=
-golang.org/x/sync v0.1.0 h1:wsuoTGHzEhffawBOhz5CYhcrV4IdKZbEyZjBMuTp12o=
-golang.org/x/sync v0.1.0/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+github.com/wowlikon/go_lan_scanner/lib v0.0.0-20240623082706-aa9e41e928a5 h1:SExYTpI1j2iglMWOlmjrkq5OHfslEMuadLtMUvaO54I=
+github.com/wowlikon/go_lan_scanner/lib v0.0.0-20240623082706-aa9e41e928a5/go.mod h1:mXOBWeLbh2HNYlbEv+dB5u3Oa0YtXsyBpaSMtkdJc2g=
+golang.org/x/sync v0.7.0 h1:YsImfSBoP9QPYL0xyKJPq0gcaJdG3rInoqxTWbfQu9M=
+golang.org/x/sync v0.7.0/go.mod h1:Czt+wKu1gCyEFDUtn0jG5QVvpJ6rzVqr5aXyt9drQfk=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
